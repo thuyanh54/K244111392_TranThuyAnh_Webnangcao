@@ -1,0 +1,32 @@
+<table border="1" style="border-collapse: collapse; margin: 20px; text-align: left;">
+  <thead>
+    <tr>
+      <th style="padding: 5px 15px;">Id</th>
+      <th style="padding: 5px 15px;">Name</th>
+      <th style="padding: 5px 15px;">Email</th>
+      <th style="padding: 5px 15px;">Age</th>
+      <th style="padding: 5px 15px; text-align: center;">#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let group of customerGroups">
+      <!-- Dòng hiển thị loại Khách hàng (1 - VIP, 2 - Normal) -->
+      <tr>
+        <td colspan="5" style="font-weight: bold; background-color: #ffffff; padding: 5px;">
+          {{ group.CustomerTypeId }} - {{ group.CustomterTypeName }}
+        </td>
+      </tr>
+
+      <!-- Vòng lặp các Khách hàng thuộc nhóm -->
+      <tr *ngFor="let cus of group.Customers">
+        <td style="padding: 10px;">{{ cus.Id }}</td>
+        <td style="padding: 10px;">{{ cus.Name }}</td>
+        <td style="padding: 10px;">{{ cus.Email }}</td>
+        <td style="padding: 10px;">{{ cus.Age }}</td>
+        <td style="padding: 5px; text-align: center;">
+          <img [src]="cus.Image" width="90" height="110" style="object-fit: cover;" />
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
